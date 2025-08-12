@@ -1,0 +1,6 @@
+##custom
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/texlive/2025/bin/x86_64-linux"
+
+#alias
+alias tiga="tig --all"
