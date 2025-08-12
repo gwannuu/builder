@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the image name and tag
-IMAGE_NAME="gwanwoo/basic"
-IMAGE_TAG="v0.1"
+IMAGE_NAME="gwanwoo/base"
+IMAGE_TAG="0.0.0"
 
 # Check if the first argument is "--no-cache"
 if [ "$1" = "--no-cache" ]; then

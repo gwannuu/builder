@@ -1,1 +1,1 @@
-docker run -v /host/path:/container/path --user $(id -u):$(id -g) imagename
+docker run -i -t -v /host/path:/container/path --gpus all $1
