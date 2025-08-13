@@ -10,7 +10,7 @@ ARG USER=gwanwoo
 # Updates package lists, upgrades packages, and installs necessary tools.
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y zsh build-essential ninja-build gettext cmake gcc sudo ca-certificates wget curl tig vim direnv nvtop
+    apt-get install -y zsh build-essential ninja-build gettext cmake gcc sudo ca-certificates wget curl tig vim direnv nvtop tmux
 
 # Creates a '$USER' group and user using HOST_UID and HOST_GID.
 # The '-m' option creates a home directory ($HOME), and '-s /bin/bash' sets the default shell.
@@ -32,9 +32,13 @@ SHELL ["/usr/bin/zsh", "-c"]
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 RUN cp /home/$USER/.oh-my-zsh/templates/zshrc.zsh-template /home/$USER/.zshrc
 
-#RUN source ~/.zshrc && omz plugin enable docker
+# Add direnv oh-my-zsh plugin
+RUN source ~/.zshrc && \
+    omz plugin enable direnv && \
+    omz plugin enable tmux
 
 COPY zshrc_custom /tmp/zshrc_custom
+COPY tmux_conf /home/$USER/.tmux.conf
 RUN cat /tmp/zshrc_custom >> /home/$USER/.zshrc
 
 
