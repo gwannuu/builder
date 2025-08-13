@@ -10,7 +10,7 @@ ARG USER=gwanwoo
 # Updates package lists, upgrades packages, and installs necessary tools.
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y zsh build-essential ninja-build gettext cmake gcc sudo ca-certificates wget curl tig vim direnv nvtop tmux
+    apt-get install -y zsh build-essential ninja-build gettext cmake gcc sudo ca-certificates wget curl tig vim direnv nvtop tmux htop
 
 # Creates a '$USER' group and user using HOST_UID and HOST_GID.
 # The '-m' option creates a home directory ($HOME), and '-s /bin/bash' sets the default shell.
