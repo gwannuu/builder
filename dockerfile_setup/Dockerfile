@@ -10,7 +10,7 @@ ARG USER=gwanwoo
 # Updates package lists, upgrades packages, and installs necessary tools.
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y zsh build-essential gcc sudo ca-certificates wget curl tig vim direnv nvtop 
+    apt-get install -y zsh build-essential ninja-build gettext cmake gcc sudo ca-certificates wget curl tig vim direnv nvtop
 
 # Creates a '$USER' group and user using HOST_UID and HOST_GID.
 # The '-m' option creates a home directory ($HOME), and '-s /bin/bash' sets the default shell.
@@ -38,21 +38,29 @@ COPY zshrc_custom /tmp/zshrc_custom
 RUN cat /tmp/zshrc_custom >> /home/$USER/.zshrc
 
 
-# Creates and navigates to the 'developer' working directory inside '$USER's home directory.
-WORKDIR /home/$USER/workspace
+WORKDIR /home/$USER/downloads
 
 # Copies the uv_installer.sh script from the build context to a temporary location inside the container.
-COPY uv_installer.sh /home/$USER/uv_installer.sh
+COPY uv_installer.sh uv_installer.sh
 # Executes the 'uv_installer.sh' script and adds the path where uv is installed to '$USER's PATH environment variable.
-RUN sh /home/$USER/uv_installer.sh
+RUN sh ./uv_installer.sh
 #RUN sh /home/$USER/uv_installer.sh && \
 #    echo "export PATH=\$PATH:\$HOME/.local/bin:" >> home/$USER/.zshrc
 
+# Install neovim
 
 # Set git config
 RUN git config --global user.email "kwanwow1999@gmail.com" && \
     git config --global user.name "gwanwoochoi" && \
     git config --global core.editor vim && \
     git config --global init.defaultBranch main
+
+RUN git clone https://github.com/neovim/neovim && \
+    cd neovim && \
+    git checkout stable && \
+    make CMAKE_BUILD_TYPE=RelWithDebInfo && \
+    sudo make install
+
+WORKDIR /home/$USER/workdir
 
 CMD ["/usr/bin/zsh"]

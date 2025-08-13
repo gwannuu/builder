@@ -2,7 +2,7 @@
 
 # Define the image name and tag
 IMAGE_NAME="gwanwoo/base"
-IMAGE_TAG="0.0.0"
+IMAGE_TAG="0.0.1"
 
 # Check if the first argument is "--no-cache"
 if [ "$1" = "--no-cache" ]; then
