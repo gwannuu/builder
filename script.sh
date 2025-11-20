@@ -26,6 +26,7 @@ newgrp docker
 
 #omz install
 sh omz-installer.sh
+omz plugin enable tmux
 
 #uv install
 sh uv_install.sh
