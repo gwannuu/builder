@@ -37,3 +37,5 @@ sh ssh-keygen.sh
 
 #alias add
 sh alias.sh
+
+source ~/.zshrc
