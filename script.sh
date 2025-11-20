@@ -35,5 +35,5 @@ uv self update
 #ssh-keygen
 sh ssh-keygen.sh
 
-
-
+#alias add
+sh alias.sh
