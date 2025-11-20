@@ -30,6 +30,7 @@ omz plugin enable tmux
 
 #uv install
 sh uv_install.sh
+uv self update
 
 #ssh-keygen
 sh ssh-keygen.sh
