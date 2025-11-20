@@ -26,12 +26,16 @@ newgrp docker
 
 #omz install
 sh omz-installer.sh
+omz plugin enable tmux
 
 #uv install
 sh uv_install.sh
+uv self update
 
 #ssh-keygen
 sh ssh-keygen.sh
 
+#alias add
+sh alias.sh
 
-
+source ~/.zshrc
