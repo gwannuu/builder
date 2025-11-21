@@ -1,1 +1,1 @@
-echo "alias tiga='tig -a'" >> ~/.zshrc
+echo "alias tiga='tig --all'" >> ~/.zshrc
